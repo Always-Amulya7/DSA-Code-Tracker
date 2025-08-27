@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "totalProblems": 1,
+    "lastUpdated": "2025-08-27T10:11:19.826Z",
+    "breakdown": {
+      "Codechef": {
+        "total": 0,
+        "Easy": 0,
+        "Medium": 0,
+        "Hard": 0
+      },
+      "Gfg": {
+        "total": 0,
+        "Easy": 0,
+        "Medium": 0,
+        "Hard": 0
+      },
+      "Leetcode": {
+        "total": 1,
+        "Easy": 1,
+        "Medium": 0,
+        "Hard": 0
+      },
+      "Hackerrank": {
+        "total": 0,
+        "Easy": 0,
+        "Medium": 0,
+        "Hard": 0
+      }
+    }
+  },
+  "problems": [
+    {
+      "id": "leetcode-easy-maximum-area-of-longest-diagonal-rectangle",
+      "platform": "Leetcode",
+      "difficulty": "Easy",
+      "problemName": "Maximum Area of Longest Diagonal Rectangle",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public int areaOfMaxDiagonal(int[][] dimensions) {\n        int n = dimensions.length;\n        int maxArea = 0, maxDiag = 0;\n\n        for (int i = 0; i < n; i++) {\n            int l = dimensions[i][0];\n            int w = dimensions[i][1];\n            int currDiag = l * l + w * w;\n\n            if (currDiag > maxDiag || (currDiag == maxDiag && l * w > maxArea)) {\n                maxDiag = currDiag;\n                maxArea = l * w;\n            }\n        }\n        return maxArea;\n    }\n}",
+        "readme": "3000. Maximum Area of Longest Diagonal RectangleEasyTopicsCompaniesHintYou are given a 2D 0-indexed integer array dimensions.\n\nFor all indices i, 0 <= i < dimensions.length, dimensions[i][0] represents the length and dimensions[i][1] represents the width of the rectangle i.\n\nReturn the area of the rectangle having the longest diagonal. If there are multiple rectangles with the longest diagonal, return the area of the rectangle having the maximum area.\n\n \nExample 1:\n\nInput: dimensions = [[9,3],[8,6]]\nOutput: 48\nExplanation: \nFor index = 0, length = 9 and width = 3. Diagonal length = sqrt(9 * 9 + 3 * 3) = sqrt(90) ≈ 9.487.\nFor index = 1, length = 8 and width = 6. Diagonal length = sqrt(8 * 8 + 6 * 6) = sqrt(100) = 10.\nSo, the rectangle at index 1 has a greater diagonal length therefore we return area = 8 * 6 = 48.\n\n\nExample 2:\n\nInput: dimensions = [[3,4],[4,3]]\nOutput: 12\nExplanation: Length of diagonal is the same for both which is 5, so maximum area = 12.\n\n\n \nConstraints:\n\n\n\t1 <= dimensions.length <= 100\n\tdimensions[i].length == 2\n\t1 <= dimensions[i][0], dimensions[i][1] <= 100\n\n Seen this question in a real interview before?1/5YesNoAccepted166,224/363.6KAcceptance Rate45.7%TopicsArrayWeekly Contest 379CompaniesHint 1Diagonal of rectangle is sqrt(length2 + width2).Discussion (129)Choose a typeComment💡 Discussion Rules1. Please don't post any solutions in this discussion.2. The problem discussion is for asking questions about the problem or for sharing tips - anything except for solutions.3. If you'd like to share your solution for feedback and ideas, please head to the solutions tab and post it there.Sort by:BestJedmengAug 26, 2025This is my 1000th POTD 😝\n Read more29116DamonJul 10, 2025Optimisation tip:\nDon't need to calculate the root\nsqrt(x^2+y^2) can just become x^2 + y^2\nsqrt is quite demanding for performance, so this can be a good optimisation Read moreTip11910NerverAug 26, 2025Acceptance rate is low because people (including myself) can't read 🤡 Read more1145SmarikaJan 11, 2024Try this test case b4 submitting\nGood day :))\ndimensions =\n[[4,7],[8,9],[5,3],[6,10],[2,9],[3,10],[2,2],[5,8],[5,10],[5,6],[8,9],[10,7],[8,9],[3,7],[2,6],[5,1],[7,4],[1,10],[1,7],[6,9],[3,3],[4,6],[8,2],[10,6],[7,9],[9,2],[1,2],[3,8],[10,2],[4,1],[9,7],[10,3],[6,9],[9,8],[7,7],[5,7],[5,4],[6,5],[1,8],[2,3],[7,10],[3,9],[5,7],[2,4],[5,6],[9,5],[8,8],[8,10],[6,8],[5,1],[10,8],[7,4],[2,1],[2,7],[10,3],[2,5],[7,6],[10,5],[10,9],[5,7],[10,6],[4,3],[10,4],[1,5],[8,9],[3,1],[2,5],[9,10],[6,6],[5,10],[10,2],[6,10],[1,1],[8,6],[1,7],[6,3],[9,3],[1,4],[1,1],[10,4],[7,9],[4,5],[2,8],[7,9],[7,3],[4,9],[2,8],[4,6],[9,1],[8,4],[2,4],[7,8],[3,5],[7,6],[8,6],[4,7],[25,60],[39,52],[16,63],[33,56]] Read more393Sam_ORAug 26, 20252012 type interview question: Read moreFeedback361Shivam KumarSep 13, 2024I can't understand why has this problem such a low acceptance rate !? It isn't even a lil bit tough..! Read more246Anish SachdevaJul 07, 2024The problem description needs to be fixed !! it says:\nIf there are multiple rectangles with the longest diagonal, return the area of the rectangle having the maximum area.\ni would assume having the maximum area means maximum among all rectangles, but apparently this means maximum among rectangles with same max diagonal length. This is hyper slippery ground !!! and needs to be fixed asap. Cost me a good 30 mins. Read more557Hritam ChowdhuryJan 07, 2024one test case is failing\n[[4,7],[8,9],[5,3],[6,10],[2,9],[3,10],[2,2],[5,8],[5,10],[5,6],[8,9],[10,7],[8,9],[3,7],[2,6],[5,1],[7,4],[1,10],[1,7],[6,9],[3,3],[4,6],[8,2],[10,6],[7,9],[9,2],[1,2],[3,8],[10,2],[4,1],[9,7],[10,3],[6,9],[9,8],[7,7],[5,7],[5,4],[6,5],[1,8],[2,3],[7,10],[3,9],[5,7],[2,4],[5,6],[9,5],[8,8],[8,10],[6,8],[5,1],[10,8],[7,4],[2,1],[2,7],[10,3],[2,5],[7,6],[10,5],[10,9],[5,7],[10,6],[4,3],[10,4],[1,5],[8,9],[3,1],[2,5],[9,10],[6,6],[5,10],[10,2],[6,10],[1,1],[8,6],[1,7],[6,3],[9,3],[1,4],[1,1],[10,4],[7,9],[4,5],[2,8],[7,9],[7,3],[4,9],[2,8],[4,6],[9,1],[8,4],[2,4],[7,8],[3,5],[7,6],[8,6],[4,7],[25,60],[39,52],[16,63],[33,56]]\nwhat is the problem in the solution:\nclass Solution {\npublic:\nint areaOfMaxDiagonal(vector<vector>& dimensions) {\n    int maxArea=0;\n    double maxD = 0;\n    int n = dimensions.size();\n    int l,b;\n    double d;\n    \n    for(int i=0;i<n;i++) {\n        \n         l = dimensions[i][0];\n         b = dimensions[i][1];\n         d = sqrt(l*l + b*b);\n        // cout<<d<<\",\";\n        if(d>=maxD) {\n            maxArea = l*b;\n            maxD=d;\n        } \n    }\n    \n    return maxArea;\n    \n}\n}; Read more175Yuyi_HaoJan 09, 2024good question to test conditional logic Read more151Azhar Uddin SheikhJan 09, 2024some test cases\n[[4,10],[4,9],[9,3],[10,8]]\n[[2,6],[5,1],[3,10],[8,4]]\n[[25,60], [39,52], [33,56], [16,63]]\n[[6,5],[8,6],[2,10],[8,1],[9,2],[3,5],[3,5]] Read more14123413Copyright © 2025 LeetCode. All rights reserved.",
+        "notes": "Maximum Area of Longest Diagonal Rectangle\n\n          - Summary: The code uses a 2D integer array to represent the dimensions of rectangles. It iterates through each rectangle, calculating the square of its diagonal using the Pythagorean theorem.  It then updates the maximum diagonal and corresponding area if a larger diagonal is found or if the diagonals are equal but the area is larger. Finally, it returns the maximum area found.\n\n          - Time Complexity: O(n), where n is the number of rectangles. This is because the code iterates through the input array once.\n          - Space Complexity: O(1). The algorithm uses a constant amount of extra space to store variables like maxArea and maxDiag, regardless of the input size."
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-27T10:11:19.824Z"
+    }
+  ]
+}
