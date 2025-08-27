@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 1,
-    "lastUpdated": "2025-08-27T10:11:19.826Z",
+    "totalProblems": 2,
+    "lastUpdated": "2025-08-27T10:13:02.977Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -16,10 +16,10 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 1,
+        "total": 2,
         "Easy": 1,
         "Medium": 0,
-        "Hard": 0
+        "Hard": 1
       },
       "Hackerrank": {
         "total": 0,
@@ -44,7 +44,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T10:11:19.824Z"
+      "lastUpdated": "2025-08-27T10:13:02.974Z"
+    },
+    {
+      "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
+      "platform": "Leetcode",
+      "difficulty": "Hard",
+      "problemName": "Length of Longest V-Shaped Diagonal Segment",
+      "language": "java",
+      "files": {
+        "code": "/**\nTime Complexity: O(mn)\nSpace Complexity: O(mn)\n */\nclass Solution {\n    private static final int[][] DIRS = { { 1, 1 }, { 1, -1 }, { -1, -1 }, { -1, 1 } };\n\n    public int lenOfVDiagonal(int[][] grid) {\n        int m = grid.length;\n        int n = grid[0].length;\n        // Too many dimensions affect efficiency, so compress k and canTurn into one int\n        int[][][] memo = new int[m][n][1 << 3];\n        int ans = 0;\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                if (grid[i][j] != 1) {\n                    continue;\n                }\n                int[] maxs = { m - i, j + 1, i + 1, n - j }; //Theoretical maximum (go to the boundary)\n                for (int k = 0; k < 4; k++) { // Enumerate starting direction\n                    // Optimization 1: If the theoretical maximum does not exceed ans, skip recursion\n                    if (maxs[k] > ans) { \n                        ans = Math.max(ans, dfs(i, j, k, 1, 2, grid, memo) + 1);\n                    }\n                }\n            }\n        }\n        return ans;\n    }\n\n    private int dfs(int i, int j, int k, int canTurn, int target, int[][] grid, int[][][] memo) {\n        i += DIRS[k][0];\n        j += DIRS[k][1];\n        if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] != target) {\n            return 0;\n        }\n        int mask = k << 1 | canTurn;\n        if (memo[i][j][mask] > 0) {\n            return memo[i][j][mask];\n        }\n        int res = dfs(i, j, k, canTurn, 2 - target, grid, memo);\n        if (canTurn == 1) {\n            int[] maxs = { grid.length - i - 1, j, i, grid[i].length - j - 1 }; // Theoretical maximum (go to the boundary)\n            k = (k + 1) % 4;\n            // Optimization 2: If the theoretical maximum does not exceed res, skip recursion\n            if (maxs[k] > res) {\n                res = Math.max(res, dfs(i, j, k, 0, 2 - target, grid, memo));\n            }\n        }\n        return memo[i][j][mask] = res + 1;\n    }\n}",
+        "readme": "3459. Length of Longest V-Shaped Diagonal SegmentSolvedHardTopicsCompaniesHintYou are given a 2D integer matrix grid of size n x m, where each element is either 0, 1, or 2.\n\nA V-shaped diagonal segment is defined as:\n\n\n\tThe segment starts with 1.\n\tThe subsequent elements follow this infinite sequence: 2, 0, 2, 0, ....\n\tThe segment:\n\t\n\t\tStarts along a diagonal direction (top-left to bottom-right, bottom-right to top-left, top-right to bottom-left, or bottom-left to top-right).\n\t\tContinues the sequence in the same diagonal direction.\n\t\tMakes at most one clockwise 90-degree turn to another diagonal direction while maintaining the sequence.\n\t\n\t\n\n\n\n\nReturn the length of the longest V-shaped diagonal segment. If no valid segment exists, return 0.\n\n \nExample 1:\n\n\nInput: grid = [[2,2,1,2,2],[2,0,2,2,0],[2,0,1,1,0],[1,0,2,2,2],[2,0,0,2,2]]\n\nOutput: 5\n\nExplanation:\n\n\n\nThe longest V-shaped diagonal segment has a length of 5 and follows these coordinates: (0,2) → (1,3) → (2,4), takes a 90-degree clockwise turn at (2,4), and continues as (3,3) → (4,2).\n\n\nExample 2:\n\n\nInput: grid = [[2,2,2,2,2],[2,0,2,2,0],[2,0,1,1,0],[1,0,2,2,2],[2,0,0,2,2]]\n\nOutput: 4\n\nExplanation:\n\n\n\nThe longest V-shaped diagonal segment has a length of 4 and follows these coordinates: (2,3) → (3,2), takes a 90-degree clockwise turn at (3,2), and continues as (2,1) → (1,0).\n\n\nExample 3:\n\n\nInput: grid = [[1,2,2,2,2],[2,2,2,2,0],[2,0,0,0,0],[0,0,2,2,2],[2,0,0,2,0]]\n\nOutput: 5\n\nExplanation:\n\n\n\nThe longest V-shaped diagonal segment has a length of 5 and follows these coordinates: (0,0) → (1,1) → (2,2) → (3,3) → (4,4).\n\n\nExample 4:\n\n\nInput: grid = [[1]]\n\nOutput: 1\n\nExplanation:\n\nThe longest V-shaped diagonal segment has a length of 1 and follows these coordinates: (0,0).\n\n\n \nConstraints:\n\n\n\tn == grid.length\n\tm == grid[i].length\n\t1 <= n, m <= 500\n\tgrid[i][j] is either 0, 1 or 2.\n\n Seen this question in a real interview before?1/5YesNoAccepted27,365/53.5KAcceptance Rate51.2%TopicsArrayDynamic ProgrammingMemoizationMatrixWeekly Contest 437CompaniesHint 1Use dynamic programming to determine the best point to make a 90-degree rotation in the diagonal path while maintaining the required sequence.Hint 2Represent dynamic programming states as (row, col, currentDirection, hasMadeTurnYet). Track the current position, direction of traversal, and whether a turn has already been made, and take transitions accordingly to find the longest V-shaped diagonal segment.Discussion (138)Choose a typeComment💡 Discussion Rules1. Please don't post any solutions in this discussion.2. The problem discussion is for asking questions about the problem or for sharing tips - anything except for solutions.3. If you'd like to share your solution for feedback and ideas, please head to the solutions tab and post it there.Sort by:BestGaurav KumarJun 09, 2025Kanye would love the first picture :) Read more175Amr Samy10 hours agoMy 3-day streak ends here. Read more1469Aradhya Verma10 hours agoI think i should work at Burger king Read more905parthasarathireddy10 hours agoToday is Vinayaka Chaturthi. LeetCode decided not to let us celebrate by giving a hard problem. Anyway, wishing you all a Happy Vinayaka Chavithi! Read more2248amcodes2k2Feb 16, 2025Can someone explain to me how the answer to the testcase [[1,1,1,2,0,0],[0,0,0,0,1,2]] is 2? Shouldn't it be 3 [(1, 4) -> (0, 3) -> (1,2)]?\nEdit: Finally got it. The rotation must be clockwise as mentioned by some of the users in the replies. It was my mistake I didn't read the question carefully. Read more327cache_2110 hours agoBased on the second part of that first image, I'm guessing this is a question you can expect to get from Telsa or X Read more412sixplosive9 hours agoheil leetcode!! Read more17Aashutosh SinghFeb 16, 2025I can't believe i was able to solve it, such a Good morning it is. IMO Q3 was difficult than Q4 Read more175Vitaliy Cherkasskiy6 hours ago\nSees the first picture\nsighs\nGoes into the comment section\n Read more14Viktor KustovFeb 17, 2025I'm the only one, who missed that the next step after 1 must be exactly 2, not 0 or 2? It cost me 2 hours of useless debugging... )) Read moreTip113123414Copyright © 2025 LeetCode. All rights reserved.",
+        "notes": "Length of Longest V-Shaped Diagonal Segment\n\n          - Summary: The code uses a 3D array `memo` for dynamic programming to store results of subproblems, a 2D array `grid` representing the input matrix, and an array `DIRS` to define diagonal directions.  It iterates through the grid, and for each cell with value 1, performs a depth-first search (`dfs`) to find the longest V-shaped diagonal segment starting from that cell. The `dfs` function explores different diagonal directions and turns, using memoization to avoid redundant computations. The algorithm returns the length of the longest V-shaped segment found.\n\n          - Time Complexity: O(mn*4^L), where m and n are the dimensions of the grid and L is the maximum length of a V-shaped diagonal segment. The time complexity is dominated by the `dfs` function, which explores at most 4 branches at each step in the worst-case.  The memoization helps to reduce the number of recursive calls.\n          - Space Complexity: O(mn*8), dominated by the 3D memoization array `memo`. The array has dimensions m x n x 8, where 8 represents the number of possible states for `mask` (4 directions x 2 turn states)."
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-27T10:13:02.976Z"
     }
   ]
 }
