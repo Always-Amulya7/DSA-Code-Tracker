@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 5,
-    "lastUpdated": "2025-08-27T17:21:54.037Z",
+    "totalProblems": 6,
+    "lastUpdated": "2025-08-28T09:32:34.922Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -16,9 +16,9 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 5,
+        "total": 6,
         "Easy": 2,
-        "Medium": 2,
+        "Medium": 3,
         "Hard": 1
       },
       "Hackerrank": {
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T17:21:53.877Z"
+      "lastUpdated": "2025-08-28T09:32:34.728Z"
     },
     {
       "id": "leetcode-easy-roman-to-integer",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-27T17:21:53.878Z"
+      "lastUpdated": "2025-08-28T09:32:34.729Z"
     },
     {
       "id": "leetcode-medium-longest-palindromic-substring",
@@ -76,7 +76,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-27T17:21:53.879Z"
+      "lastUpdated": "2025-08-28T09:32:34.730Z"
+    },
+    {
+      "id": "leetcode-medium-sort-matrix-by-diagonals",
+      "platform": "Leetcode",
+      "difficulty": "Medium",
+      "problemName": "Sort Matrix by Diagonals",
+      "language": "java",
+      "files": {
+        "code": "import java.util.*;\n\nclass Solution {\n    public int[][] sortMatrix(int[][] matrix) {\n        Map<Integer, PriorityQueue<Integer>> diagonalMap = new HashMap<>();\n        int rows = matrix.length, cols = matrix[0].length;\n\n        for (int i = 0; i < rows; i++) {\n            for (int j = 0; j < cols; j++) {\n                int key = i - j;\n                diagonalMap.putIfAbsent(key, key < 0 ? new PriorityQueue<>() \n                                                     : new PriorityQueue<>(Collections.reverseOrder()));\n                diagonalMap.get(key).offer(matrix[i][j]);\n            }\n        }\n\n        for (int i = 0; i < rows; i++) {\n            for (int j = 0; j < cols; j++) {\n                int key = i - j;\n                matrix[i][j] = diagonalMap.get(key).poll();\n            }\n        }\n\n        return matrix;\n    }\n}",
+        "readme": "DailyCodingChallengeCompleted!,CompletionStreak:,43,Days,Consistencyiskey,seeyoutomorrow!\n\nYou are given an n x n square matrix of integers grid. Return the matrix such that:\n\n\n\tThe diagonals in the bottom-left triangle (including the middle diagonal) are sorted in non-increasing order.\n\tThe diagonals in the top-right triangle are sorted in non-decreasing order.\n\n\n \nExample 1:\n\n\nInput: grid = [[1,7,3],[9,8,2],[4,5,6]]\n\nOutput: [[8,2,3],[9,6,7],[4,5,1]]\n\nExplanation:\n\n\n\nThe diagonals with a black arrow (bottom-left triangle) should be sorted in non-increasing order:\n\n\n\t[1, 8, 6] becomes [8, 6, 1].\n\t[9, 5] and [4] remain unchanged.\n\n\nThe diagonals with a blue arrow (top-right triangle) should be sorted in non-decreasing order:\n\n\n\t[7, 2] becomes [2, 7].\n\t[3] remains unchanged.\n\n\n\nExample 2:\n\n\nInput: grid = [[0,1],[1,2]]\n\nOutput: [[2,1],[1,0]]\n\nExplanation:\n\n\n\nThe diagonals with a black arrow must be non-increasing, so [0, 2] is changed to [2, 0]. The other diagonals are already in the correct order.\n\n\nExample 3:\n\n\nInput: grid = [[1]]\n\nOutput: [[1]]\n\nExplanation:\n\nDiagonals with exactly one element are already in order, so no changes are needed.\n\n\n \nConstraints:\n\n\n\tgrid.length == grid[i].length == n\n\t1 <= n <= 10\n\t-105 <= grid[i][j] <= 105",
+        "notes": ""
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": false,
+      "lastUpdated": "2025-08-28T09:32:34.732Z"
     },
     {
       "id": "leetcode-medium-zigzag-conversion",
@@ -92,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-27T17:21:53.880Z"
+      "lastUpdated": "2025-08-28T09:32:34.732Z"
     },
     {
       "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
@@ -108,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T17:21:53.882Z"
+      "lastUpdated": "2025-08-28T09:32:34.734Z"
     }
   ]
 }
