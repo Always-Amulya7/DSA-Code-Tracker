@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 7,
-    "lastUpdated": "2025-08-28T10:57:06.673Z",
+    "totalProblems": 8,
+    "lastUpdated": "2025-08-28T12:18:25.757Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -22,14 +22,30 @@
         "Hard": 2
       },
       "Hackerrank": {
-        "total": 0,
+        "total": 1,
         "Easy": 0,
-        "Medium": 0,
+        "Medium": 1,
         "Hard": 0
       }
     }
   },
   "problems": [
+    {
+      "id": "hackerrank-medium-java-static-initializer-block",
+      "platform": "Hackerrank",
+      "difficulty": "Medium",
+      "problemName": "Java Static Initializer Block",
+      "language": "java",
+      "files": {
+        "code": "import java.io.*;\nimport java.util.*;\n\npublic class Solution {\n\n    static int B;\n    static int H;\n    static boolean flag;\n\n    static {\n        Scanner sc = new Scanner(System.in);\n        B = sc.nextInt();\n        H = sc.nextInt();\n\n        try {\n            if (B <= 0 || H <= 0) {\n                throw new Exception(\"Breadth and height must be positive\");\n            } else {\n                flag = true;\n            }\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n\n    public static void main(String[] args) {\n        if (flag) {\n            int area = B * H;\n            System.out.println(area);\n        }\n    }\n}",
+        "readme": "null\n\nStatic initialization blocks are executed when the class is loaded, and you can initialize static variables in those blocks.\n\nIt's time to test your knowledge of Static initialization blocks. You can read about it here.\n\nYou are given a class Solution with a main method. Complete the given code so that it outputs the area of a parallelogram with breadth  and height . You should read the variables from the standard input.\n\nIf  or  , the output should be \"java.lang.Exception: Breadth and height must be positive\" without quotes.\n\nInput Format\n\nThere are two lines of input. The first line contains : the breadth of the parallelogram. The next line contains : the height of the parallelogram.\n\nConstraints\n\nOutput Format\n\nIf both values are greater than zero, then the main method must output the area of the parallelogram. Otherwise, print \"java.lang.Exception: Breadth and height must be positive\" without quotes.\n\nSample input 1\n\n1\n3\n\n\nSample output 1\n\n3\n\n\nSample input 2\n\n-1\n2\n\n\nSample output 2\n\njava.lang.Exception: Breadth and height must be positive",
+        "notes": ""
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": false,
+      "lastUpdated": "2025-08-28T12:18:25.645Z"
+    },
     {
       "id": "leetcode-easy-maximum-area-of-longest-diagonal-rectangle",
       "platform": "Leetcode",
@@ -44,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T10:57:06.648Z"
+      "lastUpdated": "2025-08-28T12:18:25.636Z"
     },
     {
       "id": "leetcode-easy-roman-to-integer",
@@ -60,7 +76,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T10:57:06.649Z"
+      "lastUpdated": "2025-08-28T12:18:25.636Z"
     },
     {
       "id": "leetcode-medium-longest-palindromic-substring",
@@ -76,7 +92,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T10:57:06.650Z"
+      "lastUpdated": "2025-08-28T12:18:25.638Z"
     },
     {
       "id": "leetcode-medium-sort-matrix-by-diagonals",
@@ -92,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T10:57:06.652Z"
+      "lastUpdated": "2025-08-28T12:18:25.640Z"
     },
     {
       "id": "leetcode-medium-zigzag-conversion",
@@ -108,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T10:57:06.653Z"
+      "lastUpdated": "2025-08-28T12:18:25.640Z"
     },
     {
       "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
@@ -124,7 +140,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T10:57:06.654Z"
+      "lastUpdated": "2025-08-28T12:18:25.642Z"
     },
     {
       "id": "leetcode-hard-regular-expression-matching",
@@ -140,7 +156,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T10:57:06.656Z"
+      "lastUpdated": "2025-08-28T12:18:25.643Z"
     }
   ]
 }
