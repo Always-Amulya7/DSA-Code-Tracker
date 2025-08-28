@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 6,
-    "lastUpdated": "2025-08-28T09:32:34.922Z",
+    "totalProblems": 7,
+    "lastUpdated": "2025-08-28T10:57:06.673Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -16,10 +16,10 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 6,
+        "total": 7,
         "Easy": 2,
         "Medium": 3,
-        "Hard": 1
+        "Hard": 2
       },
       "Hackerrank": {
         "total": 0,
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T09:32:34.728Z"
+      "lastUpdated": "2025-08-28T10:57:06.648Z"
     },
     {
       "id": "leetcode-easy-roman-to-integer",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T09:32:34.729Z"
+      "lastUpdated": "2025-08-28T10:57:06.649Z"
     },
     {
       "id": "leetcode-medium-longest-palindromic-substring",
@@ -76,7 +76,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T09:32:34.730Z"
+      "lastUpdated": "2025-08-28T10:57:06.650Z"
     },
     {
       "id": "leetcode-medium-sort-matrix-by-diagonals",
@@ -92,7 +92,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T09:32:34.732Z"
+      "lastUpdated": "2025-08-28T10:57:06.652Z"
     },
     {
       "id": "leetcode-medium-zigzag-conversion",
@@ -108,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T09:32:34.732Z"
+      "lastUpdated": "2025-08-28T10:57:06.653Z"
     },
     {
       "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
@@ -124,7 +124,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T09:32:34.734Z"
+      "lastUpdated": "2025-08-28T10:57:06.654Z"
+    },
+    {
+      "id": "leetcode-hard-regular-expression-matching",
+      "platform": "Leetcode",
+      "difficulty": "Hard",
+      "problemName": "Regular Expression Matching",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public boolean isMatch(String s, String p) {\n        int m = s.length(), n = p.length();\n        boolean[][] dp = new boolean[m + 1][n + 1];\n        dp[0][0] = true;\n        for (int j = 2; j <= n; j++) {\n            if (p.charAt(j - 1) == '*') {\n                dp[0][j] = dp[0][j - 2];\n            }\n        }\n        for (int i = 1; i <= m; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (p.charAt(j - 1) == '*') {\n                    dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.'));\n                } else {\n                    dp[i][j] = dp[i - 1][j - 1] && (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.');\n                }\n            }\n        }\n        return dp[m][n];\n    }\n}",
+        "readme": "StringDynamicProgrammingRecursion\n\nGiven an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:\n\n\n\t'.' Matches any single character.​​​​\n\t'*' Matches zero or more of the preceding element.\n\n\nThe matching should cover the entire input string (not partial).\n\n \nExample 1:\n\nInput: s = \"aa\", p = \"a\"\nOutput: false\nExplanation: \"a\" does not match the entire string \"aa\".\n\n\nExample 2:\n\nInput: s = \"aa\", p = \"a*\"\nOutput: true\nExplanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes \"aa\".\n\n\nExample 3:\n\nInput: s = \"ab\", p = \".*\"\nOutput: true\nExplanation: \".*\" means \"zero or more (*) of any character (.)\".\n\n\n \nConstraints:\n\n\n\t1 <= s.length <= 20\n\t1 <= p.length <= 20\n\ts contains only lowercase English letters.\n\tp contains only lowercase English letters, '.', and '*'.\n\tIt is guaranteed for each appearance of the character '*', there will be a previous valid character to match.",
+        "notes": "Regular Expression Matching\n\n          - Summary: This Java code implements a dynamic programming solution to the regular expression matching problem. It uses a 2D boolean array (dp) to store whether a substring of s matches a substring of p. The algorithm iteratively builds the dp array, considering cases where the pattern character is '*' (representing zero or more occurrences) or a regular character.  The final result, indicating whether the entire string s matches the entire pattern p, is stored in dp[m][n], where m and n are the lengths of s and p, respectively.\n\n          - Time Complexity: O(mn), where m is the length of string s and n is the length of pattern p. This is because the nested loops iterate through all possible substring matches.\n          - Space Complexity: O(mn) due to the use of the dp array which has dimensions (m+1) x (n+1) to store boolean values representing matching substrings. The space used is directly proportional to the product of input string and pattern lengths."
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-28T10:57:06.656Z"
     }
   ]
 }
