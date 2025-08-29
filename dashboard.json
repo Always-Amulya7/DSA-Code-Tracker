@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 8,
-    "lastUpdated": "2025-08-28T12:18:25.757Z",
+    "totalProblems": 9,
+    "lastUpdated": "2025-08-29T17:37:39.694Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -16,9 +16,9 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 7,
+        "total": 8,
         "Easy": 2,
-        "Medium": 3,
+        "Medium": 4,
         "Hard": 2
       },
       "Hackerrank": {
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T12:18:25.645Z"
+      "lastUpdated": "2025-08-29T17:37:39.547Z"
     },
     {
       "id": "leetcode-easy-maximum-area-of-longest-diagonal-rectangle",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T12:18:25.636Z"
+      "lastUpdated": "2025-08-29T17:37:39.538Z"
     },
     {
       "id": "leetcode-easy-roman-to-integer",
@@ -76,7 +76,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T12:18:25.636Z"
+      "lastUpdated": "2025-08-29T17:37:39.539Z"
+    },
+    {
+      "id": "leetcode-medium-alice-and-bob-playing-flower-game",
+      "platform": "Leetcode",
+      "difficulty": "Medium",
+      "problemName": "Alice and Bob Playing Flower Game",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public long flowerGame(int n, int m) {\n        return 1L * n * m / 2;\n    }\n}",
+        "readme": "DailyCodingChallengeCompleted!,CompletionStreak:,44,Days,Consistencyiskey,seeyoutomorrow!\n\nAlice and Bob are playing a turn-based game on a field, with two lanes of flowers between them. There are x flowers in the first lane between Alice and Bob, and y flowers in the second lane between them.\n\n\n\nThe game proceeds as follows:\n\n\n\tAlice takes the first turn.\n\tIn each turn, a player must choose either one of the lane and pick one flower from that side.\n\tAt the end of the turn, if there are no flowers left at all, the current player captures their opponent and wins the game.\n\n\nGiven two integers, n and m, the task is to compute the number of possible pairs (x, y) that satisfy the conditions:\n\n\n\tAlice must win the game according to the described rules.\n\tThe number of flowers x in the first lane must be in the range [1,n].\n\tThe number of flowers y in the second lane must be in the range [1,m].\n\n\nReturn the number of possible pairs (x, y) that satisfy the conditions mentioned in the statement.\n\n \nExample 1:\n\nInput: n = 3, m = 2\nOutput: 3\nExplanation: The following pairs satisfy conditions described in the statement: (1,2), (3,2), (2,1).\n\n\nExample 2:\n\nInput: n = 1, m = 1\nOutput: 0\nExplanation: No pairs satisfy the conditions described in the statement.\n\n\n \nConstraints:\n\n\n\t1 <= n, m <= 105",
+        "notes": ""
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": false,
+      "lastUpdated": "2025-08-29T17:37:39.540Z"
     },
     {
       "id": "leetcode-medium-longest-palindromic-substring",
@@ -92,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T12:18:25.638Z"
+      "lastUpdated": "2025-08-29T17:37:39.541Z"
     },
     {
       "id": "leetcode-medium-sort-matrix-by-diagonals",
@@ -108,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T12:18:25.640Z"
+      "lastUpdated": "2025-08-29T17:37:39.542Z"
     },
     {
       "id": "leetcode-medium-zigzag-conversion",
@@ -124,7 +140,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-28T12:18:25.640Z"
+      "lastUpdated": "2025-08-29T17:37:39.543Z"
     },
     {
       "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
@@ -140,7 +156,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T12:18:25.642Z"
+      "lastUpdated": "2025-08-29T17:37:39.545Z"
     },
     {
       "id": "leetcode-hard-regular-expression-matching",
@@ -156,7 +172,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-28T12:18:25.643Z"
+      "lastUpdated": "2025-08-29T17:37:39.546Z"
     }
   ]
 }
