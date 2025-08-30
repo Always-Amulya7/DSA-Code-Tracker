@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 9,
-    "lastUpdated": "2025-08-29T17:37:39.694Z",
+    "totalProblems": 10,
+    "lastUpdated": "2025-08-30T16:56:47.027Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -16,9 +16,9 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 8,
+        "total": 9,
         "Easy": 2,
-        "Medium": 4,
+        "Medium": 5,
         "Hard": 2
       },
       "Hackerrank": {
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-29T17:37:39.547Z"
+      "lastUpdated": "2025-08-30T16:56:47.009Z"
     },
     {
       "id": "leetcode-easy-maximum-area-of-longest-diagonal-rectangle",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-29T17:37:39.538Z"
+      "lastUpdated": "2025-08-30T16:56:46.998Z"
     },
     {
       "id": "leetcode-easy-roman-to-integer",
@@ -76,7 +76,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-29T17:37:39.539Z"
+      "lastUpdated": "2025-08-30T16:56:46.999Z"
     },
     {
       "id": "leetcode-medium-alice-and-bob-playing-flower-game",
@@ -92,7 +92,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-29T17:37:39.540Z"
+      "lastUpdated": "2025-08-30T16:56:47.001Z"
     },
     {
       "id": "leetcode-medium-longest-palindromic-substring",
@@ -108,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-29T17:37:39.541Z"
+      "lastUpdated": "2025-08-30T16:56:47.002Z"
     },
     {
       "id": "leetcode-medium-sort-matrix-by-diagonals",
@@ -124,7 +124,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-29T17:37:39.542Z"
+      "lastUpdated": "2025-08-30T16:56:47.003Z"
+    },
+    {
+      "id": "leetcode-medium-valid-sudoku",
+      "platform": "Leetcode",
+      "difficulty": "Medium",
+      "problemName": "Valid Sudoku",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public boolean isValidSudoku(char[][] board) {\n        boolean[][] rows = new boolean[9][9];\n        boolean[][] cols = new boolean[9][9];\n        boolean[][] boxes = new boolean[9][9];\n\n        for (int i = 0; i < 9; i++) {\n            for (int j = 0; j < 9; j++) {\n                if (board[i][j] != '.') {\n                    int num = board[i][j] - '1';\n                    int boxIndex = (i / 3) * 3 + (j / 3);\n\n                    if (rows[i][num] || cols[j][num] || boxes[boxIndex][num]) {\n                        return false;\n                    }\n\n                    rows[i][num] = cols[j][num] = boxes[boxIndex][num] = true;\n                }\n            }\n        }\n        return true;\n    }\n}",
+        "readme": "DailyCodingChallengeCompleted!,CompletionStreak:,45,Days,Consistencyiskey,seeyoutomorrow!\n\nDetermine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:\n\n\n\tEach row must contain the digits 1-9 without repetition.\n\tEach column must contain the digits 1-9 without repetition.\n\tEach of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.\n\n\nNote:\n\n\n\tA Sudoku board (partially filled) could be valid but is not necessarily solvable.\n\tOnly the filled cells need to be validated according to the mentioned rules.\n\n\n \nExample 1:\n\nInput: board = \n[[\"5\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"]\n,[\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"]\n,[\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"]\n,[\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"]\n,[\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"]\n,[\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"]\n,[\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"]\n,[\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"]\n,[\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]]\nOutput: true\n\n\nExample 2:\n\nInput: board = \n[[\"8\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"]\n,[\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"]\n,[\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"]\n,[\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"]\n,[\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"]\n,[\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"]\n,[\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"]\n,[\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"]\n,[\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]]\nOutput: false\nExplanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.\n\n\n \nConstraints:\n\n\n\tboard.length == 9\n\tboard[i].length == 9\n\tboard[i][j] is a digit 1-9 or '.'.",
+        "notes": ""
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": false,
+      "lastUpdated": "2025-08-30T16:56:47.004Z"
     },
     {
       "id": "leetcode-medium-zigzag-conversion",
@@ -140,7 +156,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-29T17:37:39.543Z"
+      "lastUpdated": "2025-08-30T16:56:47.005Z"
     },
     {
       "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
@@ -156,7 +172,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-29T17:37:39.545Z"
+      "lastUpdated": "2025-08-30T16:56:47.006Z"
     },
     {
       "id": "leetcode-hard-regular-expression-matching",
@@ -172,7 +188,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-29T17:37:39.546Z"
+      "lastUpdated": "2025-08-30T16:56:47.007Z"
     }
   ]
 }
