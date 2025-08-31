@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 10,
-    "lastUpdated": "2025-08-30T16:56:47.027Z",
+    "totalProblems": 11,
+    "lastUpdated": "2025-08-31T09:11:28.369Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -16,10 +16,10 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 9,
+        "total": 10,
         "Easy": 2,
         "Medium": 5,
-        "Hard": 2
+        "Hard": 3
       },
       "Hackerrank": {
         "total": 1,
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-30T16:56:47.009Z"
+      "lastUpdated": "2025-08-31T09:11:28.201Z"
     },
     {
       "id": "leetcode-easy-maximum-area-of-longest-diagonal-rectangle",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-30T16:56:46.998Z"
+      "lastUpdated": "2025-08-31T09:11:28.189Z"
     },
     {
       "id": "leetcode-easy-roman-to-integer",
@@ -76,7 +76,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-30T16:56:46.999Z"
+      "lastUpdated": "2025-08-31T09:11:28.190Z"
     },
     {
       "id": "leetcode-medium-alice-and-bob-playing-flower-game",
@@ -92,7 +92,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-30T16:56:47.001Z"
+      "lastUpdated": "2025-08-31T09:11:28.192Z"
     },
     {
       "id": "leetcode-medium-longest-palindromic-substring",
@@ -108,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-30T16:56:47.002Z"
+      "lastUpdated": "2025-08-31T09:11:28.193Z"
     },
     {
       "id": "leetcode-medium-sort-matrix-by-diagonals",
@@ -124,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-30T16:56:47.003Z"
+      "lastUpdated": "2025-08-31T09:11:28.194Z"
     },
     {
       "id": "leetcode-medium-valid-sudoku",
@@ -140,7 +140,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-30T16:56:47.004Z"
+      "lastUpdated": "2025-08-31T09:11:28.195Z"
     },
     {
       "id": "leetcode-medium-zigzag-conversion",
@@ -156,7 +156,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-08-30T16:56:47.005Z"
+      "lastUpdated": "2025-08-31T09:11:28.196Z"
     },
     {
       "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
@@ -172,7 +172,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-30T16:56:47.006Z"
+      "lastUpdated": "2025-08-31T09:11:28.197Z"
     },
     {
       "id": "leetcode-hard-regular-expression-matching",
@@ -188,7 +188,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-30T16:56:47.007Z"
+      "lastUpdated": "2025-08-31T09:11:28.198Z"
+    },
+    {
+      "id": "leetcode-hard-sudoku-solver",
+      "platform": "Leetcode",
+      "difficulty": "Hard",
+      "problemName": "Sudoku Solver",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    int n = 3;\n    int N = n * n;\n    int[][] rows = new int[N][N + 1];\n    int[][] columns = new int[N][N + 1];\n    int[][] boxes = new int[N][N + 1];\n    char[][] board;\n    boolean sudokuSolved = false;\n\n    public boolean couldPlace(int d, int row, int col) {\n        int idx = (row / n) * n + col / n;\n        return rows[row][d] + columns[col][d] + boxes[idx][d] == 0;\n    }\n\n    public void placeNumber(int d, int row, int col) {\n        int idx = (row / n) * n + col / n;\n        rows[row][d]++;\n        columns[col][d]++;\n        boxes[idx][d]++;\n        board[row][col] = (char)(d + '0');\n    }\n\n    public void removeNumber(int d, int row, int col) {\n        int idx = (row / n) * n + col / n;\n        rows[row][d]--;\n        columns[col][d]--;\n        boxes[idx][d]--;\n        board[row][col] = '.';\n    }\n\n    public void placeNextNumbers(int row, int col) {\n        if (row == N - 1 && col == N - 1) sudokuSolved = true;\n        else if (col == N - 1) backtrack(row + 1, 0);\n        else backtrack(row, col + 1);\n    }\n\n    public void backtrack(int row, int col) {\n        if (board[row][col] == '.') {\n            for (int d = 1; d <= 9; d++) {\n                if (couldPlace(d, row, col)) {\n                    placeNumber(d, row, col);\n                    placeNextNumbers(row, col);\n                    if (!sudokuSolved) removeNumber(d, row, col);\n                }\n            }\n        } else placeNextNumbers(row, col);\n    }\n\n    public void solveSudoku(char[][] board) {\n        this.board = board;\n        for (int i = 0; i < N; i++)\n            for (int j = 0; j < N; j++)\n                if (board[i][j] != '.') placeNumber(Character.getNumericValue(board[i][j]), i, j);\n        backtrack(0, 0);\n    }\n}",
+        "readme": "DailyCodingChallengeCompleted!,YouhavebeenawardedDCCAugust2025!,Consistencyiskey,seeyounextmonth!\n\nWrite a program to solve a Sudoku puzzle by filling the empty cells.\n\nA sudoku solution must satisfy all of the following rules:\n\n\n\tEach of the digits 1-9 must occur exactly once in each row.\n\tEach of the digits 1-9 must occur exactly once in each column.\n\tEach of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.\n\n\nThe '.' character indicates empty cells.\n\n \nExample 1:\n\nInput: board = [[\"5\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"],[\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"],[\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"],[\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"],[\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"],[\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"],[\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"],[\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"],[\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]]\nOutput: [[\"5\",\"3\",\"4\",\"6\",\"7\",\"8\",\"9\",\"1\",\"2\"],[\"6\",\"7\",\"2\",\"1\",\"9\",\"5\",\"3\",\"4\",\"8\"],[\"1\",\"9\",\"8\",\"3\",\"4\",\"2\",\"5\",\"6\",\"7\"],[\"8\",\"5\",\"9\",\"7\",\"6\",\"1\",\"4\",\"2\",\"3\"],[\"4\",\"2\",\"6\",\"8\",\"5\",\"3\",\"7\",\"9\",\"1\"],[\"7\",\"1\",\"3\",\"9\",\"2\",\"4\",\"8\",\"5\",\"6\"],[\"9\",\"6\",\"1\",\"5\",\"3\",\"7\",\"2\",\"8\",\"4\"],[\"2\",\"8\",\"7\",\"4\",\"1\",\"9\",\"6\",\"3\",\"5\"],[\"3\",\"4\",\"5\",\"2\",\"8\",\"6\",\"1\",\"7\",\"9\"]]\nExplanation: The input board is shown above and the only valid solution is shown below:\n\n\n\n\n \nConstraints:\n\n\n\tboard.length == 9\n\tboard[i].length == 9\n\tboard[i][j] is a digit or '.'.\n\tIt is guaranteed that the input board has only one solution.",
+        "notes": ""
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": false,
+      "lastUpdated": "2025-08-31T09:11:28.199Z"
     }
   ]
 }
