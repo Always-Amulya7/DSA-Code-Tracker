@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 12,
-    "lastUpdated": "2025-09-01T14:53:19.450Z",
+    "totalProblems": 13,
+    "lastUpdated": "2025-09-02T15:50:02.422Z",
     "breakdown": {
       "Codechef": {
         "total": 0,
@@ -16,9 +16,9 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 11,
+        "total": 12,
         "Easy": 2,
-        "Medium": 6,
+        "Medium": 7,
         "Hard": 3
       },
       "Hackerrank": {
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.324Z"
+      "lastUpdated": "2025-09-02T15:50:02.403Z"
     },
     {
       "id": "leetcode-easy-maximum-area-of-longest-diagonal-rectangle",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-09-01T14:53:19.311Z"
+      "lastUpdated": "2025-09-02T15:50:02.389Z"
     },
     {
       "id": "leetcode-easy-roman-to-integer",
@@ -76,7 +76,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.312Z"
+      "lastUpdated": "2025-09-02T15:50:02.390Z"
     },
     {
       "id": "leetcode-medium-alice-and-bob-playing-flower-game",
@@ -92,7 +92,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.313Z"
+      "lastUpdated": "2025-09-02T15:50:02.392Z"
+    },
+    {
+      "id": "leetcode-medium-find-the-number-of-ways-to-place-people-i",
+      "platform": "Leetcode",
+      "difficulty": "Medium",
+      "problemName": "Find the Number of Ways to Place People I",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public int numberOfPairs(int[][] points) {\n        int count=0;\n        int n=points.length;\n\n        for(int i=0; i<n; i++) {\n            int x1=points[i][0],y1=points[i][1];\n            for(int j=0; j<n; j++) {\n                if(i==j) continue;\n                int x2=points[j][0],y2=points[j][1];\n                if(x1>x2 || y1<y2) continue;\n\n                boolean flag=true;\n                for(int k=0; k<n; k++) {\n                    if(k==i || k==j) continue;\n                    int x=points[k][0],y=points[k][1];\n\n                    if(x>=x1 && x<=x2 && y<=y1 && y>=y2) {\n                        flag=false;\n                        break;\n                    }                        \n                }\n                if(flag==true) count++;\n            }\n        }\n\n        return count;\n    }\n\n}",
+        "readme": "DailyCodingChallengeCompleted!,CompletionStreak:,48,Days,Consistencyiskey,seeyoutomorrow!\n\nYou are given a 2D array points of size n x 2 representing integer coordinates of some points on a 2D plane, where points[i] = [xi, yi].\n\nCount the number of pairs of points (A, B), where\n\n\n\tA is on the upper left side of B, and\n\tthere are no other points in the rectangle (or line) they make (including the border).\n\n\nReturn the count.\n\n \nExample 1:\n\n\nInput: points = [[1,1],[2,2],[3,3]]\n\nOutput: 0\n\nExplanation:\n\n\n\nThere is no way to choose A and B so A is on the upper left side of B.\n\n\nExample 2:\n\n\nInput: points = [[6,2],[4,4],[2,6]]\n\nOutput: 2\n\nExplanation:\n\n\n\n\n\tThe left one is the pair (points[1], points[0]), where points[1] is on the upper left side of points[0] and the rectangle is empty.\n\tThe middle one is the pair (points[2], points[1]), same as the left one it is a valid pair.\n\tThe right one is the pair (points[2], points[0]), where points[2] is on the upper left side of points[0], but points[1] is inside the rectangle so it's not a valid pair.\n\n\n\nExample 3:\n\n\nInput: points = [[3,1],[1,3],[1,1]]\n\nOutput: 2\n\nExplanation:\n\n\n\n\n\tThe left one is the pair (points[2], points[0]), where points[2] is on the upper left side of points[0] and there are no other points on the line they form. Note that it is a valid state when the two points form a line.\n\tThe middle one is the pair (points[1], points[2]), it is a valid pair same as the left one.\n\tThe right one is the pair (points[1], points[0]), it is not a valid pair as points[2] is on the border of the rectangle.\n\n\n\n \nConstraints:\n\n\n\t2 <= n <= 50\n\tpoints[i].length == 2\n\t0 <= points[i][0], points[i][1] <= 50\n\tAll points[i] are distinct.",
+        "notes": ""
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": false,
+      "lastUpdated": "2025-09-02T15:50:02.393Z"
     },
     {
       "id": "leetcode-medium-longest-palindromic-substring",
@@ -108,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.315Z"
+      "lastUpdated": "2025-09-02T15:50:02.394Z"
     },
     {
       "id": "leetcode-medium-maximum-average-pass-ratio",
@@ -124,7 +140,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.316Z"
+      "lastUpdated": "2025-09-02T15:50:02.395Z"
     },
     {
       "id": "leetcode-medium-sort-matrix-by-diagonals",
@@ -140,7 +156,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.317Z"
+      "lastUpdated": "2025-09-02T15:50:02.396Z"
     },
     {
       "id": "leetcode-medium-valid-sudoku",
@@ -156,7 +172,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.318Z"
+      "lastUpdated": "2025-09-02T15:50:02.397Z"
     },
     {
       "id": "leetcode-medium-zigzag-conversion",
@@ -172,7 +188,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.319Z"
+      "lastUpdated": "2025-09-02T15:50:02.398Z"
     },
     {
       "id": "leetcode-hard-length-of-longest-v-shaped-diagonal-segment",
@@ -188,7 +204,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-09-01T14:53:19.320Z"
+      "lastUpdated": "2025-09-02T15:50:02.399Z"
     },
     {
       "id": "leetcode-hard-regular-expression-matching",
@@ -204,7 +220,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-09-01T14:53:19.321Z"
+      "lastUpdated": "2025-09-02T15:50:02.400Z"
     },
     {
       "id": "leetcode-hard-sudoku-solver",
@@ -220,7 +236,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": false,
-      "lastUpdated": "2025-09-01T14:53:19.322Z"
+      "lastUpdated": "2025-09-02T15:50:02.401Z"
     }
   ]
 }
